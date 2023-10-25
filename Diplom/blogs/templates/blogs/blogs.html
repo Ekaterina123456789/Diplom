@@ -1,0 +1,51 @@
+{% extends 'blogs/base.html' %}
+
+{% block content %}
+
+    <main class="blogs">
+    <section class="text-center">
+        <div class="container">
+            <form class="form" action="#" method="get">
+                <div class="form--field">
+                  <label for="formInput#search">Поиск новостей </label>
+                  <input class="input input--text" id="formInput#search" type="text" name="text"
+                    placeholder="Поиск по заголовку" />
+                </div>
+
+                <input class="btn btn--sub btn--lg" type="submit" value="Погнали!" />
+              </form>
+        </div>
+    </section>
+    <section class="blog">
+        <div class="container">
+            <div class="wrap">
+                <div class="column">
+                    <div class="card--blog">
+                        <a href="single--blog.html" class="blog">
+                            <img class="thumbnail" src="images/project-a.png" alt="blog thumbnail" />
+                            <div class="card--body">
+                              <h3 class="blog--title">Новость</h3>
+                              <p><a class="blog--author" href="profile.html">автор Иван Иванов</a></p>
+                              <div class="project--tags">
+                                <span class="tag tag--pill tag--main">
+                                  <small>Коляски</small>
+                                </span>
+                                <span class="tag tag--pill tag--main">
+                                  <small>Чемпионат РФ</small>
+                                </span>
+                                <span class="tag tag--pill tag--main">
+                                  <small>Серпухов</small>
+                                </span>
+                              </div>
+                            </div>
+                          </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+{% endblock %}

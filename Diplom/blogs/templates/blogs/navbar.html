@@ -1,0 +1,40 @@
+{% load static %}
+<header class="header">
+    <div class="container">
+        <a href="{% url 'blogs' %}" class="header--logo">
+            <img class="logo" src="{% static 'images/logo2.svg' %}" alt="Motocross Logo" />
+        </a>
+        <a href="https://vk.com/id454447482" class="pre--menu">
+            <i class='fa-solid fa-motorcycle fa-bounce fa-xs' style='color: #2525ed;'></i>
+            <img src="{% static 'images/vk.ico" alt="VK"/>
+        </a>
+
+        <nav class="header--nav">
+            <input type="checkbox" id="menu">
+
+            <label for="menu" class="menu">
+                <span>Меню </span>
+                <div class="menu--lines"></div>
+            </label>
+            <ul class="header--menu">
+                <li class="header--menu--items"><a href="blogs.html"><i class="fa-solid fa-motorcycle fa-bounce fa-xs" style="color: #2525ed;"></i>Главная</a></li>
+                <li class="header--menu--items"><a href="login.html"><i class="fa-solid fa-motorcycle fa-bounce fa-sm" style="color: #2525ed;"></i>Регистрация / Вход</a></li>
+                <li class="header--menu--items"><a href="account.html"><i class="fa-solid fa-motorcycle fa-bounce fa-lg" style="color: #2525ed;"></i>Аккаунт пользователя</a></li>
+                <li class="header--menu--items"><a href="add_new.html"><i class="fa-solid fa-motorcycle fa-bounce fa-xl" style="color: #2525ed;"></i>Добавить новость</a></li>
+                <li class="header--menu--items"><a href="results.html"><i class="fa-solid fa-motorcycle fa-bounce fa-2xl" style="color: #2525ed;"></i>Результаты соревнований</a></li>
+            </ul>
+        </nav>
+
+        <div class="autor">
+            <a href="{% url 'blogs' %}" class="header--autor">
+            <label for="menu" class="menu">
+                <a href=""><img class="autor--photo" src="{% static 'images/autor_photo.jpg' %}" alt="Autor" /></a>
+                <span><br>О создателе блога</span>
+                <div class="autor--lines"> </div>
+            </label>
+            </a>
+
+        </div>
+
+    </div>
+</header>
