@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+    <link rel="stylesheet" href="{% static 'fontawesome/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/brands.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/solid.css' %}">
+    <link rel="stylesheet" href="{% static 'uikit/styles/uikit.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/app.css' %}">
+    <title>Не вешай нос - люби мотокросс</title>
+</head>
+<body>
+
+{% include 'blogs/navbar.html' %}
+
+{% block content %}
+ <i class="fa-solid fa-motorcycle fa-bounce fa-xs" style="color: #2525ed;"></i>
+{% endblock %}
+
+{% include 'blogs/footer.html' %}
+</body>
+</html>
