@@ -9,31 +9,31 @@
   overflow: hidden;
 }
 
-.card__link {
+.card--link {
   transition: all 0.3s ease-in;
 }
 
-.card__link:hover {
+.card--link:hover {
   text-decoration: none;
 }
 
-.card__body,
-.card__header {
+.card--body,
+.card--header {
   padding: 2rem 2.5rem;
 }
 
-.card__header {
+.card--header {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
   border-bottom: 1.5px solid var(--color-light);
 }
 
-.card__headerTitle {
+.card--headerTitle {
   font-size: 2.2rem;
   font-weight: var(--font-medium);
 }
 
-.card__header .card__link:hover {
+.card--header .card--link:hover {
   text-decoration: underline;
   color: var(--color-main);
 }
@@ -42,6 +42,6 @@
   background-color: var(--color-light);
 }
 
-.card.card--dark .card__header {
+.card.card--dark .card--header {
   box-shadow: var(--generic-shadow);
 }

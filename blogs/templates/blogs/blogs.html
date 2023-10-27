@@ -6,43 +6,46 @@
     <section class="text-center">
         <div class="container">
             <form class="form" action="#" method="get">
-                <div class="form--field">
+                <div class="form__field">
                   <label for="formInput#search">Поиск новостей </label>
                   <input class="input input--text" id="formInput#search" type="text" name="text"
                     placeholder="Поиск по заголовку" />
                 </div>
-
                 <input class="btn btn--sub btn--lg" type="submit" value="Погнали!" />
-              </form>
+
+            </form>
         </div>
     </section>
     <section class="blog">
         <div class="container">
-            <div class="wrap">
+            <div class="layout">
+                <div class="column column--2of3">
+                {% for blog in blogs %}
                 <div class="column">
                     <div class="card--blog">
-                        <a href="single--blog.html" class="blog">
-                            <img class="thumbnail" src="images/project-a.png" alt="blog image" />
+                        <a href="{% url 'blog' blog.id %}" class="blog">
+                            <img class="thumbnail" src="{{ blog.image.url }}" alt="blog image" />
+                            <a href="{{ blog.video_link.url }}"> Посмотреть видео</a>
                             <div class="card--body">
-                              <h3 class="blog--title">Новость <i class="fa-solid fa-motorcycle fa-bounce fa-lg" style="color: #196903;"></i></h3>
+                              <h3 class="blog--title">{{ blog.title }} <i class="fa-solid fa-motorcycle fa-bounce fa-xs" style="color: #196903;"></i></h3>
                               <p><a class="blog--author" href="profile.html">автор Иван Иванов</a></p>
-                              <div class="project--tags">
+                              <div class="blog--tags">
+                                {% for tag in blog.tags.all %}
                                 <span class="tag tag--pill tag--main">
-                                  <small>Коляски</small>
+                                  <small>{{ tag }}</small>
                                 </span>
-                                <span class="tag tag--pill tag--main">
-                                  <small>Чемпионат РФ</small>
-                                </span>
-                                <span class="tag tag--pill tag--main">
-                                  <small>Серпухов</small>
-                                </span>
+                                {% endfor %}
                               </div>
                             </div>
                           </a>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-
+                <div class="column column--1of3">
+                    Объявления:
+                </div>
+            </div>
         </div>
     </section>
 

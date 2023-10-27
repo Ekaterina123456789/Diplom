@@ -90,7 +90,7 @@ img {
 }
 
 .autor--photo{
-  width: 240px;
+  width: 200px;
 }
 
 .autor span{
@@ -437,45 +437,45 @@ img {
 }
 
 /*=======================
-  Single Projects
+  Single Blog
 ========================*/
 
-.singleProject .column--1of3 {
+.singleBlog .column--1of3 {
   order: 2;
 }
 
 @media screen and (min-width: 1081px) {
-  .singleProject .column--1of3 {
+  .singleBlog .column--1of3 {
     order: 1;
   }
-  .singleProject .column--2of3 {
+  .singleBlog .column--2of3 {
     order: 2;
   }
 }
 
-.singleProject__toolStack {
+.singleBlog--toolStack {
   margin-top: 2rem;
   margin-bottom: 4rem;
 }
 
-.singleProject__liveLink {
+.singleBlog--liveLink {
   font-weight: 500;
   transition: all 0.3s ease-in-out;
   border-bottom: 2px solid transparent;
 }
 
-.singleProject__liveLink:hover {
+.singleBlog--liveLink:hover {
   font-weight: 500;
   border-bottom: 2px solid var(--color-main);
 }
 
-.singleProject__liveLink i {
+.singleBlog--liveLink i {
   display: inline-block;
   font-size: 1.6rem;
   margin-right: 1rem;
 }
 
-.singleProject__preview {
+.singleBlog--preview {
   height: 50vh;
   object-fit: cover;
   object-position: top center;
@@ -483,29 +483,24 @@ img {
   border-radius: 0.7rem;
 }
 
-.singleProject__developer {
+.singleBlog--developer {
   font-size: 1.8rem;
   font-weight: 500;
 }
 
-.singleProject__title {
+.singleBlog--title {
   font-size: 3.6rem;
   font-weight: 700;
   color: var(--color-sub);
   margin-bottom: 3rem;
 }
 
-.project__author{
+.blog--author{
   font-size: 1.4rem;
   font-style: italic;
 }
 
-.project--rating{
-  margin-bottom: 1.6em;
-  margin-top: .5em;
-}
-
-.singleProject__subtitle {
+.singleBlog--subtitle {
   text-transform: uppercase;
   font-size: 2.4rem;
   font-weight: 700;
