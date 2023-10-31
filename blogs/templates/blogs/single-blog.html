@@ -1,5 +1,5 @@
 {% extends 'blogs/base.html' %}
-
+{% load embed_video_tags %}
 {% block content %}
 
   <main class="singleBlog my-md">
@@ -14,9 +14,12 @@
             </span>
               {% endfor %}
           </div>
-          {% if blog.video_link %}
-          <a class="singleBlog__liveLink" href="{{ blog.video_link }}" target="_blank"><i class="im im-external-link">Source Code</i>
-          </a>
+          {% if blog.source_link %}
+            <a class="singleBlog__liveLink" href="{{ blog.source_link }}" target="_blank"><i class="im im-external-link">Посмотреть  в источнике</i>
+            </a>
+          {% endif %}
+          {% if blog.video %}
+            <iframe width="560" height="315" src="{{ blog.video }}" frameborder="0" allowfullscreen></iframe>
           {% endif %}
         </div>
         <div class="column column--2of3">

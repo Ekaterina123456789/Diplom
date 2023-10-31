@@ -25,7 +25,9 @@
                     <div class="card--blog">
                         <a href="{% url 'blog' blog.id %}" class="blog">
                             <img class="thumbnail" src="{{ blog.image.url }}" alt="blog image" />
-                            <a href="{{ blog.video_link.url }}"> Посмотреть видео</a>
+                            {% if blog.video %}
+                                <iframe width="560" height="315" src="{{ blog.video }}" frameborder="0" allowfullscreen></iframe>
+                            {% endif %}
                             <div class="card--body">
                               <h3 class="blog--title">{{ blog.title }} <i class="fa-solid fa-motorcycle fa-bounce fa-xs" style="color: #196903;"></i></h3>
                               <p><a class="blog--author" href="profile.html">автор Иван Иванов</a></p>
@@ -44,6 +46,13 @@
             </div>
                 <div class="column column--1of3">
                     Объявления:
+                    {% for adv in advert %}
+                        <h4>{{ adv.text }}</h4>
+                        <h5>{{ adv.contacts }}</h5>
+                    {% endfor %}
+                    {% for adv in advertisement %}
+                        {{ adv.text }}
+                    {% endfor %}
                 </div>
             </div>
         </div>
