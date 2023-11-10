@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blogs.apps.BlogsConfig',
     'embed_video',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [

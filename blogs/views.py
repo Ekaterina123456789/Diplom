@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Blog, Advertisement
+from .models import Blog
 from .forms import BlogForm
 
 
@@ -15,13 +15,13 @@ def blog(request, pk):
     return render(request, 'blogs/single-blog.html', context)
 
 
-def advertisement(request):
-    advert = Advertisement.objects.all()
-    context = {'advertisement': advert}
-    return render(request, 'blogs/blogs.html', context)
-
-
 def create_blog(request):
-    form = BlogForm()
-    context = {'form': form}
-    return render(request, 'blogs/form-template.html', context)
+    if request.method == 'POST':
+        form = BlogForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('blogs')
+    else:
+        form = BlogForm()
+        context = {'form': form}
+        return render(request, 'blogs/form-template.html', context)

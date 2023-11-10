@@ -20,8 +20,8 @@
         <div class="container">
             <div class="layout">
                 <div class="column column--2of3">
-                {% for blog in blogs %}
-                <div class="column">
+                    {% for blog in blogs %}
+                    <div class="column">
                     <div class="card--blog">
                         <a href="{% url 'blog' blog.id %}" class="blog">
                             <img class="thumbnail" src="{{ blog.image.url }}" alt="blog image" />
@@ -30,7 +30,7 @@
                             {% endif %}
                             <div class="card--body">
                               <h3 class="blog--title">{{ blog.title }} <i class="fa-solid fa-motorcycle fa-bounce fa-xs" style="color: #196903;"></i></h3>
-                              <p><a class="blog--author" href="profile.html">автор Иван Иванов</a></p>
+                              <p><a class="blog--author" href=" {% url 'blog' blog.id %}">автор {{ blog.owner.name }}</a></p>
                               <div class="blog--tags">
                                 {% for tag in blog.tags.all %}
                                 <span class="tag tag--pill tag--main">
@@ -42,11 +42,11 @@
                           </a>
                     </div>
                 </div>
-                {% endfor %}
-            </div>
+                    {% endfor %}
+                </div>
                 <div class="column column--1of3">
                     Объявления:
-                    {% for adv in advert %}
+                    {% for adv in profiles.advertisement_set.all %}
                         <h4>{{ adv.text }}</h4>
                         <h5>{{ adv.contacts }}</h5>
                     {% endfor %}
@@ -57,7 +57,6 @@
             </div>
         </div>
     </section>
-
 </main>
 
 {% endblock %}
