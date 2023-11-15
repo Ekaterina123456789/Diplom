@@ -12,7 +12,6 @@
                     placeholder="Поиск по заголовку" />
                 </div>
                 <input class="btn btn--sub btn--lg" type="submit" value="Погнали!" />
-
             </form>
         </div>
     </section>
@@ -30,7 +29,7 @@
                             {% endif %}
                             <div class="card--body">
                               <h3 class="blog--title">{{ blog.title }} <i class="fa-solid fa-motorcycle fa-bounce fa-xs" style="color: #196903;"></i></h3>
-                              <p><a class="blog--author" href=" {% url 'blog' blog.id %}">автор {{ blog.owner.name }}</a></p>
+                              <p><a class="blog--author" href="{% url 'user_profile' blog.owner.id %} ">автор {{ blog.owner.name }}</a></p>
                               <div class="blog--tags">
                                 {% for tag in blog.tags.all %}
                                 <span class="tag tag--pill tag--main">
@@ -46,12 +45,14 @@
                 </div>
                 <div class="column column--1of3">
                     Объявления:
-                    {% for adv in profiles.advertisement_set.all %}
+                    <div>
+                    {% for adv in advertisement %}
+<!--                        <a href="">-->
                         <h4>{{ adv.text }}</h4>
                         <h5>{{ adv.contacts }}</h5>
-                    {% endfor %}
-                    {% for adv in advertisement %}
-                        {{ adv.text }}
+                        <h5>{{ adv.owner }}</h5>
+<!--                        </a>-->
+                    </div>
                     {% endfor %}
                 </div>
             </div>

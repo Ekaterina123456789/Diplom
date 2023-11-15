@@ -56,8 +56,42 @@ img {
   background-color: var(--color-main-light);
 }
 
-.header--menu{
+.menu{
+  position: relative;
+  display: inline-block;
+}
+
+.menu--content {
+  display: none;
+  position: absolute;
+  background-color: var(--color-white);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px var(--color-text);
+  z-index: 1;
+}
+
+.menu--content a {
+  color: var(--color-text);
+  padding: 12px 16px;
+  text-decoration: none;
   display: block;
+}
+
+.menu--content a:hover {
+  background-color: var(--color-light);
+}
+
+.menu:hover .menu--content {
+  display: block;
+}
+
+.menu:hover {
+  background-color: var(--color-main-light);
+}
+
+.header--menu{
+  display: inline-flex;
+  list-style-type: none;
 }
 
 .header--menu :hover{
@@ -101,7 +135,7 @@ img {
   width: 25px;
 }
 
-.project--thumbnail {
+.blog--thumbnail {
   height: 250px;
   object-fit: cover;
 }
@@ -509,45 +543,49 @@ img {
 }
 
 /*=======================
-  Projects Page
+  Blogs Page
 ========================*/
-.projects > .hero-section {
+.text-center {
+  margin-bottom: 15px;
+}
+
+.blogs > .hero-section {
   background: var(--color-sub-lighter);
   height: 30vh;
 }
 
-.projects .hero-section__box {
+.blogs .hero-section__box {
   margin-bottom: 2.5rem;
 }
 
-.projects .hero-section__box > h2 {
+.blogs .hero-section__box > h2 {
   color: var(--color-sub);
 }
 
-.projects .hero-section__box > h2 > span {
+.blogs .hero-section__box > h2 > span {
   font-weight: 700;
   color: var(--color-sub);
 }
 
-.projectsList {
+.blogsList {
   margin-top: 8rem;
 }
 
-/*========== Projects ==========*/
+/*========== Blogs ==========*/
 
-.project__thumbnail {
+.blog__thumbnail {
   object-fit: cover;
   object-position: top center;
   width: 100%;
 }
 
-.project__title {
+.blog__title {
   font-size: 2rem;
   font-weight: 700;
   color: var(--color-sub);
 }
 
-.project__info {
+.blog__info {
   margin: 1rem 0;
   font-size: 1.4rem;
   text-align: justify;
@@ -672,7 +710,6 @@ img {
   height: 99vh;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .auth::after {
@@ -685,7 +722,7 @@ img {
   left: 0;
   bottom: 0;
   right: 0;
-  background: url(../images/pattern.jpg);
+  background: url(../images/pattern2.jpg);
 }
 
 .auth > .card {

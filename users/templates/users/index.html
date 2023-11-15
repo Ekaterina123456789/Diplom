@@ -6,7 +6,7 @@
     <section class="hero-section text-center">
       <div class="container container--narrow">
         <div class="hero-section__box">
-          <h2>ОБЩАЙСЯ С<span>МОТОГОНЩИКАМИ</span></h2>
+          <h2>ОБЩАЙСЯ С <span>МОТОГОНЩИКАМИ</span></h2>
           <h2>ПО ВСЕМУ МИРУ</h2>
         </div>
 
@@ -30,16 +30,16 @@
           {% for profile in profiles %}
           <div class="column card">
             <div class="dev">
-              <a href="/profile.html" class="card__body">
+              <a href="{% url 'user_profile' profile.id %}" class="card__body">
                 <div class="dev__profile">
-                  <img class="avatar avatar--md" src="{{ profiles.profile_image.url }}" alt="image" />
+                  <img class="avatar avatar--md" src="{{ profile.profile_image.url }}" alt="image" />
                   <div class="dev__meta">
                     <h3>{{ profile.name }}</h3>
-                    <h5>{{ profile.short_info }}</h5>
+                    <h5>{{ profile.short_info | truncatechars:200 }}</h5>
                   </div>
                 </div>
                 <p class="dev__info">
-                  {{ profile.bio }}
+                  {{ profile.bio | truncatechars:500 | linebreaksbr }}
                 </p>
                 <div class="dev__skills">
                   {% for skill in profile.skill_set.all %}

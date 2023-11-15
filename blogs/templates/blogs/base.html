@@ -16,6 +16,14 @@
 
 {% include 'blogs/navbar.html' %}
 
+{% for message in messages%}
+<div style="text-align: center;">
+    <div class="alert alert--{{ message.tags }}">
+        <p class="alert__message">{{ message }}</p>
+        <button class="alert__close"><i class="fa-solid fa-motorcycle fa-bounce fa-xs" style="color: #2525ed;"></i></button>
+    </div>
+</div>
+{% endfor %}
 {% block content %}
 <i class="fa-solid fa-motorcycle fa-bounce fa-xs" style="color: #2525ed;"></i>
 {% endblock %}

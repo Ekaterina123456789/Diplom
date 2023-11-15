@@ -1,37 +1,46 @@
 {% load static %}
 <header class="header">
     <div class="container">
-        <a href="https://yandex.ru/games/app/104552?utm_campaign=rus_games_category-tag1_yandex_search_460.new%7C59209247&utm_medium=search&utm_source=yandex&utm_term=мото%20играть&utm_content=k50id%7C0100000026530692216_26530692216%7Ccid%7C59209247%7Cgid%7C4460577361%7Caid%7C10267378046%7Cadp%7Cno%7Cpos%7Cpremium1%7Csrc%7Csearch_none%7Cdvc%7Cdesktop%7Cmain#app-id=104552&catalog-session-uid=catalog-fdd06838-9f26-5c54-88c1-589accba6267-1698846900716-2e6a&rtx-reqid=15332313874183280178&pos=%7B%22listType%22%3A%22suggested%22%2C%22tabCategory%22%3A%22tag%22%7D&redir-data=%7B%22block%22%3A%22suggested%22%2C%22block_index%22%3A1%2C%22card%22%3A%22adaptive_recommended_new%22%2C%22col%22%3A1%2C%22first_screen%22%3A1%2C%22page%22%3A%22tag_175%22%2C%22rn%22%3A208590498%2C%22row%22%3A0%2C%22rtx_reqid%22%3A%2215332313874183280178%22%2C%22wrapper%22%3A%22grid-list%22%2C%22http_ref%22%3A%22https%253A%252F%252Fyandex.ru%252Fgames%252Ftag%252Fmototsikly_175%253Fk50id%253D0100000026530692216_26530692216%2526etext%253D2202.CMxsDZ-hGwTWFh2cPU1_FpYTB3ZeaDfPndT3Yvr5L9u6a-esZMgbT12hHn-036G7emVmb3FudGlxdGtkenVkcw.7a316d76cc2939811d87c6c8d372c2196b7d29a1%2526yclid%253D6468167345593194550%22%7D" class="header--logo">
+        <a href="https://yandex.ru/games/app/104552?utm_campaign=rus_games_category-tag1_yandex_search_460.new%7C59209247&utm_medium=search&utm_source=yandex&utm_term=мото%20играть&utm_content=k50id%7C0100000026530692216_26530692216%7Ccid%7C59209247%7Cgid%7C4460577361%7Caid%7C10267378046%7Cadp%7Cno%7Cpos%7Cpremium1%7Csrc%7Csearch_none%7Cdvc%7Cdesktop%7Cmain#app-id=104552&catalog-session-uid=catalog-fdd06838-9f26-5c54-88c1-589accba6267-1698846900716-2e6a&rtx-reqid=15332313874183280178&pos=%7B%22listType%22%3A%22suggested%22%2C%22tabCategory%22%3A%22tag%22%7D&redir-data=%7B%22block%22%3A%22suggested%22%2C%22block_index%22%3A1%2C%22card%22%3A%22adaptive_recommended_new%22%2C%22col%22%3A1%2C%22first_screen%22%3A1%2C%22page%22%3A%22tag_175%22%2C%22rn%22%3A208590498%2C%22row%22%3A0%2C%22rtx_reqid%22%3A%2215332313874183280178%22%2C%22wrapper%22%3A%22grid-list%22%2C%22http_ref%22%3A%22https%253A%252F%252Fyandex.ru%252Fgames%252Ftag%252Fmototsikly_175%253Fk50id%253D0100000026530692216_26530692216%2526etext%253D2202.CMxsDZ-hGwTWFh2cPU1_FpYTB3ZeaDfPndT3Yvr5L9u6a-esZMgbT12hHn-036G7emVmb3FudGlxdGtkenVkcw.7a316d76cc2939811d87c6c8d372c2196b7d29a1%2526yclid%253D6468167345593194550%22%7D" class="header--logo" target="_blank">
             <img class="logo" src="{% static 'images/logo2.svg' %}" alt="Motocross Logo" />
         </a>
-<!--        <nav class="header&#45;&#45;nav">-->
-<!--            <input type="checkbox" id="menu">-->
-
-<!--            <label for="menu" class="menu">-->
-<!--                <span>Меню </span>-->
-<!--                <div class="menu&#45;&#45;lines"></div>-->
+<!--            <label class="menu">-->
+                <div class="menu">
+                    <button class="btn btn--sub">Меню</button>
+                    <div class="menu--content">
+                        <a href="blogs/about.html"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i><br>История</a>
+                        <a href="blogs/results.html"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i><br>Результаты соревнований</a>
+                        {% if request.user.is_authenticated %}
+                        <a href="{% url 'create-blog' %}"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i><br>Добавить новость</a>
+                        {% endif %}
+                    </div>
+                </div>
 <!--            </label>-->
+        <nav class="header--nav">
             <ul class="header--menu">
-                <li class="header--menu--items"><a href="{% url 'blogs' %}"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i>  Главная</a></li>
-                <li class="header--menu--items"><a href="{% url 'blogs' %}"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i>  Вход / Регистрация</a></li>
-                <li class="header--menu--items"><a href="{% url 'profiles' %}"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i>  Аккаунт пользователя</a></li>
-                <li class="header--menu--items"><a href="{% url 'profiles' %}"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i>  Пользователи</a></li>
-                <li class="header--menu--items"><a href="{% url 'create-blog' %}"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i>  Добавить новость</a></li>
-                <li class="header--menu--items"><a href="about.html"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i>  История</a></li>
-                <li class="header--menu--items"><a href="results.html"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i>  Результаты соревнований</a></li>
+                <li class="header--menu--items"><a href="{% url 'blogs' %}"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i><br>Главная</a></li>
+                <li class="header--menu--items"><a href="{% url 'profiles' %}"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i><br>Пользователи</a></li>
+                {% if request.user.is_authenticated %}
+<!--                <li class="header__menuItem"><a href="{% url 'blogs' %}"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i>  Inbox</a></li>-->
+                <li class="header--menu--items"><a href="{% url 'blogs' %}"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i><br>Мой аккаунт</a></li>
+                <li>
+                    <a href="https://vk.com/motocross_ru" target="_blank" rel="noopener noreferrer" class="vk">
+                        <img src="{% static 'images/vk.ico' %}" alt="VK"/><br>Мотокросс в VK
+                    </a>
+                </li>
+                <li>
+                    <a href="https://t.me/motocrossrace/433" target="_blank" rel="noopener noreferrer" class="vk">
+                        <img src="{% static 'images/tg.ico' %}" alt="telegram"/><br>Анонс мероприятий
+                    </a>
+                </li>
+                <li class="header__menuItem"><a href="{% url 'logout' %}" class="btn btn--sub">Выйти</a></li>
+                {% else %}
+                <li class="header--menu--items"><a href="{% url 'login' %}"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i><br>Вход / Регистрация</a></li>
+                {% endif %}
             </ul>
         </nav>
-
         <div class="autor">
-            <a href="{% url 'blogs' %}"><img class="autor--photo" src="{% static 'images/autor_photo.jpg' %}" alt="Autor" /> <br> О создателе блога</a>
-            <a href="https://vk.com/motocross_ru" target="_blank" rel="noopener noreferrer" class="vk">
-                <img src="{% static 'images/vk.ico' %}" alt="VK"/>  Мотокросс в VK
-            </a>
-            <a href="https://t.me/motocrossrace/433" target="_blank" rel="noopener noreferrer" class="vk">
-                <img src="{% static 'images/tg.ico' %}" alt="telegram"/>  Анонс мероприятий
-            </a>
-            <div class="autor--lines"> </div>
+            <a href="{% url 'blogs' %}"><img class="avatar avatar--lg" src="{% static 'images/autor_photo.jpg' %}" alt="Autor" /> <br> О создателе блога</a>
         </div>
-
     </div>
 </header>

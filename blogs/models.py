@@ -26,4 +26,11 @@ class Tag(models.Model):
         return self.name
 
 
+class Advertisement(models.Model):
+    text = models.TextField(null=True, blank=True)
+    contacts = models.CharField(max_length=250)
+    owner = models.ForeignKey(Profiles, on_delete=models.SET_NULL,
+                              blank=True, null=True, verbose_name='Автор объявления')
 
+    def __str__(self):
+        return self.text
