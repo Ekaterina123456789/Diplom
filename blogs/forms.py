@@ -2,7 +2,6 @@ from django.forms import ModelForm, CheckboxSelectMultiple
 from .models import Blog
 
 
-
 class BlogForm(ModelForm):
     class Meta:
         model = Blog

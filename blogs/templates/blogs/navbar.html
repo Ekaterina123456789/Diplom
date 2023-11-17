@@ -8,7 +8,7 @@
                 <div class="menu">
                     <button class="btn btn--sub">Меню</button>
                     <div class="menu--content">
-                        <a href="blogs/about.html"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i><br>История</a>
+                        <a href="{% url 'about' %}"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i><br>История</a>
                         <a href="blogs/results.html"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i><br>Результаты соревнований</a>
                         {% if request.user.is_authenticated %}
                         <a href="{% url 'create-blog' %}"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i><br>Добавить новость</a>
@@ -22,7 +22,7 @@
                 <li class="header--menu--items"><a href="{% url 'profiles' %}"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i><br>Пользователи</a></li>
                 {% if request.user.is_authenticated %}
 <!--                <li class="header__menuItem"><a href="{% url 'blogs' %}"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i>  Inbox</a></li>-->
-                <li class="header--menu--items"><a href="{% url 'blogs' %}"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i><br>Мой аккаунт</a></li>
+                <li class="header--menu--items"><a href="{% url 'account' %}"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i><br>Мой аккаунт</a></li>
                 <li>
                     <a href="https://vk.com/motocross_ru" target="_blank" rel="noopener noreferrer" class="vk">
                         <img src="{% static 'images/vk.ico' %}" alt="VK"/><br>Мотокросс в VK

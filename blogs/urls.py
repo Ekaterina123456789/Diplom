@@ -7,5 +7,5 @@ urlpatterns = [
     path('blogs/<str:pk>/', views.blog, name='blog'),
     path('create-blog/', views.create_blog, name='create-blog'),
     # path('profile/<str:pk>/', views.user_profile, name='user_profile'),
-    path('blogs/about.html', views.about, name='about'),
+    path('about', views.about, name='about'),
 ]
