@@ -8,7 +8,7 @@
                 <div class="card text-center">
                     <div class="card__body dev">
                         <a class="tag tag--pill tag--main settings__btn" href="{% url 'edit-account' %}"><i
-                                class="im im-edit"></i> Edit</a>
+                                class="im im-edit"></i> Редактировать</a>
                         <img class="avatar avatar--xl dev__avatar"
                              src="{{ profile.profile_image.url }}"/>
                         <h2 class="dev__name">{{ profile.name }}</h2>
@@ -33,15 +33,15 @@
             </div>
             <div class="column column--2of3">
                 <div class="devInfo">
-                    <h3 class="devInfo__title">About Me</h3>
+                    <h3 class="devInfo__title">Мои достижения</h3>
                     <p class="devInfo__about">
                         {{ profile.bio | linebreaksbr }}
                     </p>
                 </div>
                 <div class="settings">
-                    <h3 class="settings__title">Skills</h3>
+                    <h3 class="settings__title">Мои спортивные звания</h3>
                     <a class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'create-skill' %}">
-                        <i class="im im-plus">Add Skill</i>
+                        <i class="im im-plus">Добавить Skill</i>
                     </a>
                 </div>
 
@@ -56,10 +56,10 @@
                         </td>
                         <td class="settings__tableActions">
                             <a class="tag tag--pill tag--main settings__btn" href="{% url 'update-skill' skill.id %}">
-                                <i class="im im-edit">Edit</i>
+                                <i class="im im-edit">Изменить</i>
                             </a>
                             <a class="tag tag--pill tag--main settings__btn" href="{% url 'delete-skill' skill.id %}">
-                                <i class="im im-x-mark-circle-o">Delete</i>
+                                <i class="im im-x-mark-circle-o">Удалить</i>
                             </a>
                         </td>
                     </tr>
@@ -67,23 +67,144 @@
                 </table>
 
                 <div class="settings">
-                    <h3 class="settings__title">Blogs</h3>
+                    <h3 class="settings__title">Мои новости</h3>
                     <a class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'create-blog' %}">
-                        <i class="im im-plus">Add Blog</i>
+                        <i class="im im-plus">Добавить новость</i>
                     </a>
                 </div>
+                {% if blogs %}
 
-                <table class="settings__table">
+                <div class="slider">
                     {% for blog in blogs %}
+
+                    <div class="item">
+                        <a class="previous" onclick="previousSlide()">&#10094;</a>
+                        <div class="item_col">
+                           <h4>{{ blog.title }}</h4>
+                           <h4>{{ blog.description | slice:'150' }}</h4>
+                           <a href="{% url 'blog' blog.id %}"><button class="btn">Подробнее</button></a>
+                           <div>
+                               <tr>
+                                   <td class="settings__tableActions">
+                                       <a class="btn" href="{% url 'update-blog' blog.id %}">
+                                           <i class="im im-edit">Изменить</i>
+                                       </a>
+                                       <a class="btn" href="{% url 'update-blog' blog.id %}">
+                                           <i class="im im-x-mark-circle-o">Удалить</i>
+                                       </a>
+                                   </td>
+                               </tr>
+                           </div>
+                        </div>
+                        <img src="{{ blog.image.url }}" alt="Blog Thumbnail"/>
+                        <a class="next" onclick="nextSlide()"> &#10095;</a>
+
+                    </div>
+
+                    {% endfor %}
+                    <div class="arrow_mobile">
+                        <a class="previous_mobile" onclick="previousSlide()"> &#10094;</a>
+                        <a class="next_mobile" onclick="nextSlide()"> &#10095;</a>
+                    </div>
+
+               </div>
+                {% endif %}
+<!--                {% if advertisement %}-->
+<!--                <table class="settings__table">-->
+<!--                    <h3 class="settings__title">Мои объявления</h3>-->
+<!--                    <div class="slider">-->
+<!--                        {% for adv in advertisement %}-->
+<!--                        <div class="item">-->
+<!--                            <a class="previous" onclick="previousSlide()">&#10094;</a>-->
+<!--                            <div class="item_col">-->
+<!--                                <a href="{% url 'user_profile' adv.owner.id %}">-->
+<!--                                <h4>{{ adv.text }}</h4>-->
+<!--                                <h5>{{ adv.contacts | slice:'150' }}</h5>-->
+<!--                                <h5>{{ adv.owner }}</h5>-->
+<!--                                </a>-->
+<!--                                <div>-->
+<!--                                   <tr>-->
+<!--                                       <td class="settings__tableActions">-->
+<!--                                           <a class="btn" href="{% url 'update-advertisement' adv.id %}">-->
+<!--                                               <i class="im im-edit">Изменить</i>-->
+<!--                                           </a>-->
+<!--                                           <a class="btn" href="{% url 'update-advertisement' adv.id %}">-->
+<!--                                               <i class="im im-x-mark-circle-o">Удалить</i>-->
+<!--                                           </a>-->
+<!--                                       </td>-->
+<!--                                   </tr>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            {% if adv.image %}-->
+<!--                            <img src="{{ adv.image.url }}" alt="Advertisement Thumbnail"/>-->
+<!--                            {% endif %}-->
+<!--                            <a class="next" onclick="nextSlide()"> &#10095;</a>-->
+<!--                        </div>-->
+<!--                        {% endfor %}-->
+<!--                        <div class="arrow_mobile">-->
+<!--                            <a class="previous_mobile" onclick="previousSlide()"> &#10094;</a>-->
+<!--                            <a class="next_mobile" onclick="nextSlide()"> &#10095;</a>-->
+<!--                        </div>-->
+
+<!--                    </div>-->
+<!--                </table>-->
+<!--                {% endif %}-->
+                <script>
+                    let slideIndex = 1;
+            /* Вызываем функцию, которая реализована ниже: */
+                    showSlides(slideIndex);
+
+            /* Увеличиваем индекс на 1 — показываем следующий слайд: */
+                    function nextSlide() {
+                       showSlides(slideIndex += 1);
+                    }
+
+            /* Уменьшаем индекс на 1 — показываем предыдущий слайд: */
+                    function previousSlide() {
+                       showSlides(slideIndex -= 1);
+                    }
+
+            /* Устанавливаем текущий слайд: */
+                    function currentSlide(n) {
+                       showSlides(slideIndex = n);
+                    }
+
+            /* Функция перелистывания: */
+                    function showSlides(n) {
+                /* Обращаемся к элементам с названием класса "item", то есть к картинкам: */
+                       let slides = document.getElementsByClassName("item");
+
+                /* Проверяем количество слайдов: */
+                        if (n > slides.length) {
+                           slideIndex = 1
+                        }
+                        if (n < 1) {
+                           slideIndex = slides.length
+                        }
+
+                /* Проходим по каждому слайду в цикле for: */
+                        for (let slide of slides) {
+                           slide.style.display = "none";
+                        }
+                /* Делаем элемент блочным: */
+                        slides[slideIndex - 1].style.display = "flex";
+                    }
+                </script>
+                <table class="settings__table">
+                <h3 class="settings__title">Мои объявления</h3>
+                    {% for adv in advertisement %}
                     <tr>
                         <td class="settings__thumbnail">
-                            <a href="{% url 'blog' blog.id %}"><img src="{{ blog.image.url }}"
+                            {% if advertisement.image %}
+                            <a href="{% url 'blog' blog.id %}"><img src="{{ advertisement.image.url }}"
                                                                           alt="Blog Thumbnail"/></a>
+                            {% endif %}
                         </td>
                         <td class="settings__tableInfo">
-                            <a href="{% url 'blog' blog.id %}">{{ blog.title }}</a>
+                            <a href="#">{{ adv.text | slice:'150' }}</a>
                             <p>
-                                {{ blog.description | slice:'150' }}
+                                {{ adv.contacts  }}
+                                {{ adv.owner }}
                             </p>
                         </td>
 

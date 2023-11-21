@@ -1,0 +1,127 @@
+.slider {
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+    padding: 2rem 3rem;
+    background-color: var(--color-white);
+    box-shadow: 4px 4px 5px 4px var(--color-sub);
+    transition: 0.5s;
+    border-radius: 5px;
+}
+
+.slider:hover {
+    box-shadow: 5px 6px 6px 4px var(--color-sub);
+    transition: 0.5s;
+}
+
+.item {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    color: var(--color-white);
+}
+
+.item_col {
+    padding: 2rem 0;
+    align-self: center;
+    text-align: center;
+}
+
+.item_col:not(:last-child) td {
+    border-bottom: 2px solid var(--color-white-light);
+  }
+
+.btn {
+    padding: 10px;
+    background-color: var(--color-sub);
+    color: var(--color-white-light);
+    border-radius: 5px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--color-white-light);
+    transition: 0.5s;
+}
+
+.slider .item img {
+    padding-right: 3rem;
+    padding-bottom: 3rem;
+    height: 15rem;
+    object-fit: contain;
+}
+
+.tr {
+    margin-top: 2rem;
+}
+.previous, .next {
+    align-self: center;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.arrow_mobile {
+    display: none;
+}
+
+.previous:hover, .next:hover {
+    background-color: var(--color-white-light);
+    padding: 5px;
+}
+
+.slider .item {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+.item h4,
+.item a {
+  padding-right: 1rem;
+  width: auto;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--color-sub);
+}
+
+@keyframes fade {
+    /* Устанавливаем и изменяем степень прозрачности: */
+    from {
+        opacity: 0.4
+    }
+    to {
+        opacity: 1
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .item {
+        flex-direction: column;
+    }
+
+    .slider {
+        margin: 0;
+        padding: auto;
+    }
+
+    .slider .item img {
+        padding-right: 3rem;
+        height: 15rem;
+        object-fit: contain;
+    }
+
+    .previous, .next {
+        display: none;
+    }
+
+    .arrow_mobile {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .previous_mobile, .next_mobile {
+        align-self: center;
+        cursor: pointer;
+        transition: 0.5s;
+        color: var(--color-white);
+    }
+}

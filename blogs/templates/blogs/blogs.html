@@ -45,13 +45,13 @@
                 </div>
                 <div class="column column--1of3">
                     Объявления:
-                    <div>
+                    <div class="card--adv">
                     {% for adv in advertisement %}
-<!--                        <a href="">-->
+                        <a href="{% url 'user_profile' adv.owner.id %}">
                         <h4>{{ adv.text }}</h4>
                         <h5>{{ adv.contacts }}</h5>
                         <h5>{{ adv.owner }}</h5>
-<!--                        </a>-->
+                        </a>
                     </div>
                     {% endfor %}
                 </div>

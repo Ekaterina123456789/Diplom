@@ -591,6 +591,31 @@ img {
   text-align: justify;
 }
 
+.card--blog {
+  
+  padding: 0 1rem;
+  background-color: var(--color-white);
+  box-shadow: 4px 4px 5px 4px var(--color-sub);
+  transition: 0.5s;
+  border-radius: 5px;
+  
+}
+
+.carg--blog:hover {
+  box-shadow: 5px 6px 6px 2px var(--color-sub);
+  transition: 0.5s;
+}
+
+.card--adv {
+  box-shadow: 2px 2px 3px 2px var(--color-sub);  
+}
+
+.card--blog:hover {
+  box-shadow: 6px 2px 2px 2px var(--color-sub);
+  transition: 0.5s;
+}
+
+
 /*========== Comments ==========*/
 
 .comments {

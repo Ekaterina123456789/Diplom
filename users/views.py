@@ -86,17 +86,19 @@ def user_account(request):
     prof = request.user.profiles
     skills = prof.skill_set.all()
     blogs = prof.blog_set.all()
+    advertisement = prof.advertisement_set.all()
     context = {
         'profile': prof,
         'skills': skills,
         'blogs': blogs,
+        'advertisement': advertisement,
     }
     return render(request, 'users/account.html', context)
 
 
 @login_required(login_url='login')
 def edit_account(request):
-    profile = request.user.profile
+    profile = request.user.profiles
     form = ProfileForm(instance=profile)
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES, instance=profile)
