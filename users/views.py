@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import CustomUserCreationForm, ProfileForm, SkillForm, MessageForm
 from .utils import search_profiles
+from blogs.models import Advertisement
 
 
 def profile(request):
@@ -25,10 +26,12 @@ def user_profile(request, pk):
     prof = Profiles.objects.get(pk=pk)
     top_skills = prof.skill_set.exclude(description__exact='')
     other_skills = prof.skill_set.filter(description__exact='')
+    advertisement = Advertisement.objects.all()
     context = {
         'profile': prof,
         'top_skills': top_skills,
         'other_skills': other_skills,
+        'advertisement': advertisement,
     }
     return render(request, 'users/profile.html', context)
 
@@ -112,7 +115,7 @@ def edit_account(request):
 
 @login_required(login_url='login')
 def create_skill(request):
-    profile = request.user.profile
+    profile = request.user.profiles
     form = SkillForm()
 
     if request.method == 'POST':
@@ -131,7 +134,7 @@ def create_skill(request):
 
 @login_required(login_url='login')
 def delete_skill(request, pk):
-    profile = request.user.profile
+    profile = request.user.profiles
     skill = profile.skill_set.get(id=pk)
 
     if request.method == 'POST':
@@ -146,7 +149,7 @@ def delete_skill(request, pk):
 
 @login_required(login_url='login')
 def update_skill(request, pk):
-    profile = request.user.profile
+    profile = request.user.profiles
     skill = profile.skill_set.get(id=pk)
     form = SkillForm(instance=skill)
 
@@ -164,7 +167,7 @@ def update_skill(request, pk):
 
 @login_required(login_url='login')
 def inbox(request):
-    profile = request.user.profile
+    profile = request.user.profiles
     message_request = profile.messages.all()
     unread_count = message_request.filter(is_read=False).count()
 
@@ -174,9 +177,10 @@ def inbox(request):
     }
     return render(request, 'users/inbox.html', context)
 
+
 @login_required(login_url='login')
 def view_message(request, pk):
-    profile = request.user.profile
+    profile = request.user.profiles
     message = profile.messages.get(pk=pk)
     if not message.is_read:
         message.is_read = True
@@ -193,7 +197,7 @@ def create_message(request, profile_pk):
     if not request.user.is_authenticated:
         del form.fields['name']
         del form.fields['email']
-        sender = request.user.profile
+        sender = request.user.profiles
 
     if request.method == 'POST':
         form = MessageForm(request.POST)

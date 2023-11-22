@@ -1,7 +1,7 @@
 .slider {
     margin-top: 3rem;
     margin-bottom: 5rem;
-    padding: 2rem 3rem;
+    padding:  1rem 3rem;
     background-color: var(--color-white);
     box-shadow: 4px 4px 5px 4px var(--color-sub);
     transition: 0.5s;
@@ -21,22 +21,12 @@
 }
 
 .item_col {
-    padding: 2rem 0;
     align-self: center;
     text-align: center;
 }
 
 .item_col:not(:last-child) td {
     border-bottom: 2px solid var(--color-white-light);
-  }
-
-.btn {
-    padding: 10px;
-    background-color: var(--color-sub);
-    color: var(--color-white-light);
-    border-radius: 5px;
-    transition: 0.5s;
-    cursor: pointer;
 }
 
 .btn:hover {

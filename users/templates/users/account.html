@@ -76,27 +76,19 @@
 
                 <div class="slider">
                     {% for blog in blogs %}
-
                     <div class="item">
                         <a class="previous" onclick="previousSlide()">&#10094;</a>
-                        <div class="item_col">
-                           <h4>{{ blog.title }}</h4>
-                           <h4>{{ blog.description | slice:'150' }}</h4>
-                           <a href="{% url 'blog' blog.id %}"><button class="btn">Подробнее</button></a>
-                           <div>
-                               <tr>
-                                   <td class="settings__tableActions">
-                                       <a class="btn" href="{% url 'update-blog' blog.id %}">
-                                           <i class="im im-edit">Изменить</i>
-                                       </a>
-                                       <a class="btn" href="{% url 'update-blog' blog.id %}">
-                                           <i class="im im-x-mark-circle-o">Удалить</i>
-                                       </a>
-                                   </td>
-                               </tr>
-                           </div>
-                        </div>
                         <img src="{{ blog.image.url }}" alt="Blog Thumbnail"/>
+                        <div class="item_col">
+
+                            <h4>{{ blog.title }}</h4>
+                            <h4>{{ blog.description | slice:'150' }}</h4>
+                            <a class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'blog' blog.id %}">Подробнее</a>
+                            <br>
+                            <a class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'update-blog' blog.id %}"><i class="im im-x-mark-circle-o">Изменить</i></a>
+                            <a class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'delete-blog' blog.id %}"><i class="im im-x-mark-circle-o">Удалить</i></a>
+                        </div>
+
                         <a class="next" onclick="nextSlide()"> &#10095;</a>
 
                     </div>
@@ -190,26 +182,39 @@
                         slides[slideIndex - 1].style.display = "flex";
                     }
                 </script>
+
+                <div class="settings">
+                    <h3 class="settings__title">Мои объявления</h3>
+                    <a class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'create-advertisement' %}">
+                        <i class="im im-plus">Добавить объявление</i>
+                    </a>
+                </div>
                 <table class="settings__table">
-                <h3 class="settings__title">Мои объявления</h3>
+                {% if advertisement %}
                     {% for adv in advertisement %}
                     <tr>
                         <td class="settings__thumbnail">
-                            {% if advertisement.image %}
-                            <a href="{% url 'blog' blog.id %}"><img src="{{ advertisement.image.url }}"
-                                                                          alt="Blog Thumbnail"/></a>
-                            {% endif %}
+                            <a href="#"><img src="{{ adv.image.url }}"
+                                             alt="Advertisement Thumbnail"/></a>
                         </td>
                         <td class="settings__tableInfo">
-                            <a href="#">{{ adv.text | slice:'150' }}</a>
+                            <a href="#">{{ adv.text }}</a>
                             <p>
                                 {{ adv.contacts  }}
                                 {{ adv.owner }}
                             </p>
                         </td>
-
+                        <td class="settings__tableActions">
+                            <a class="tag tag--pill tag--main settings__btn" href="{% url 'update-advertisement' adv.id %}">
+                                <i class="im im-edit">Изменить</i>
+                            </a>
+                            <a class="tag tag--pill tag--main settings__btn" href="{% url 'delete-advertisement' adv.id %}">
+                                <i class="im im-x-mark-circle-o">Удалить</i>
+                            </a>
+                        </td>
                     </tr>
                     {% endfor %}
+                {% endif %}
                 </table>
             </div>
         </div>

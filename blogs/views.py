@@ -20,7 +20,7 @@ def blog(request, pk):
 
 @login_required(login_url='login')
 def create_blog(request):
-    profile = request.user.profile
+    profile = request.user.profiles
     form = BlogForm()
 
     if request.method == 'POST':
@@ -57,6 +57,37 @@ def update_blog(request, pk):
 
 
 @login_required(login_url='login')
+def delete_blog(request, pk):
+    profile = request.user.profiles
+    bl = profile.blog_set.get(id=pk)
+
+    if request.method == 'POST':
+        bl.delete()
+        return redirect('account')
+
+    context = {'blog': bl}
+    return render(request, 'blogs/delete.html', context)
+
+
+# перенести create_advertisement, update_advertisement и delete_advertisement в приложение user
+@login_required(login_url='login')
+def create_advertisement(request):
+    profile = request.user.profiles
+    form = AdvertisementForm()
+
+    if request.method == 'POST':
+        form = AdvertisementForm(request.POST, request.FILES)
+        if form.is_valid():
+            adv = form.save(commit=False)
+            adv.owner = profile
+            adv.save()
+            return redirect('account')
+
+    context = {'form': form}
+    return render(request, 'blogs/form-advertisement.html', context)
+
+
+@login_required(login_url='login')
 def update_advertisement(request, pk):
     profile = request.user.profiles
     advertisement = profile.advertisement_set.get(id=pk)
@@ -73,6 +104,18 @@ def update_advertisement(request, pk):
     return render(request, 'blogs/form-advertisement.html', context)
 
 
+@login_required(login_url='login')
+def delete_advertisement(request, pk):
+    profile = request.user.profiles
+    adv = profile.blog_set.get(id=pk)
+
+    if request.method == 'POST':
+        adv.delete()
+        return redirect('account')
+
+    context = {'advertisement': adv}
+    return render(request, 'blogs/delete.html', context)
+
+
 def about(request):
     return render(request, 'blogs/about.html')
-

@@ -12,7 +12,7 @@
 
                 <form class="form" method="POST">
                     {% csrf_token %}
-                    <p>Вы уверены, что хотите удалить <b>"{{ skill.name }}"</b>?</p>
+                    <p>Вы уверены, что хотите удалить <b>"{{ advertisement.text | slice:'20' }}"</b>?</p>
                     <a class="btn btn--sub btn--lg  my-md" href="{% url 'account' %}">&#x2190 Вернуться назад</a>
                     <input class="btn btn--sub btn--lg  my-md" type="submit" value="Delete" />
                 </form>

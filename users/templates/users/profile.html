@@ -12,7 +12,7 @@
               <h2 class="dev__name">{{ profile.name }}</h2>
               <p class="dev__title">{{ profile.short_info | linebreaksbr }}</p>
               <ul class="dev__social">
-                {% if profile.social_vk %}
+                {% if profiles.social_vk %}
                 <li>
                   <a title="VK" href="{{ profiles.social_vk }}" target="_blank"><i class="fa fa-vk-square"></i></a>
                 </li>
@@ -83,6 +83,28 @@
               {% endfor %}
             </div>
           </div>
+            <div class="settings">
+              <h3 class="settings__title">Мои объявления</h3>
+            </div>
+            <table class="settings__table">
+                {% if advertisement %}
+                    {% for adv in advertisement %}
+                    <tr>
+                        <td class="settings__thumbnail">
+                            <a href="#"><img src="{{ adv.image.url }}"
+                                             alt="Advertisement Thumbnail"/></a>
+                        </td>
+                        <td class="settings__tableInfo">
+                            <a href="#">{{ adv.text }}</a>
+                            <p>
+                                {{ adv.contacts  }}
+                                {{ adv.owner }}
+                            </p>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                {% endif %}
+              </table>
         </div>
       </div>
     </div>

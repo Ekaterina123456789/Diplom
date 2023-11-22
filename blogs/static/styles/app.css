@@ -592,8 +592,8 @@ img {
 }
 
 .card--blog {
-  
-  padding: 0 1rem;
+  margin-bottom: 5rem;
+  padding: 0 3rem;
   background-color: var(--color-white);
   box-shadow: 4px 4px 5px 4px var(--color-sub);
   transition: 0.5s;

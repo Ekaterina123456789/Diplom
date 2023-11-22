@@ -28,6 +28,8 @@ class Tag(models.Model):
 
 class Advertisement(models.Model):
     text = models.TextField(null=True, blank=True)
+    image = models.ImageField(null=True, blank=True, upload_to="advertisements/",
+                              default='adv-default.jpg', verbose_name='Изображение')
     contacts = models.CharField(max_length=250)
     owner = models.ForeignKey(Profiles, on_delete=models.SET_NULL,
                               blank=True, null=True, verbose_name='Автор объявления')

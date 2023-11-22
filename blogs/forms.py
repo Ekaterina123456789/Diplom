@@ -36,10 +36,7 @@ class BlogForm(ModelForm):
 class AdvertisementForm(ModelForm):
     class Meta:
         model = Advertisement
-        fields = ['text', 'contacts', 'owner']
-        widgets = {
-            'owner': CheckboxSelectMultiple(),
-        }
+        fields = ['text', 'image', 'contacts']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
