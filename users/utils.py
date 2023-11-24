@@ -15,3 +15,6 @@ def search_profiles(request):
                                               Q(skill__in=skills))
 
     return users, search_query
+
+
+

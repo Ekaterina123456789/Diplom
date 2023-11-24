@@ -80,11 +80,10 @@
                         <a class="previous" onclick="previousSlide()">&#10094;</a>
                         <img src="{{ blog.image.url }}" alt="Blog Thumbnail"/>
                         <div class="item_col">
-
-                            <h4>{{ blog.title }}</h4>
-                            <h4>{{ blog.description | slice:'150' }}</h4>
-                            <a class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'blog' blog.id %}">Подробнее</a>
-                            <br>
+                            <a href="{% url 'blog' blog.id %}">
+                                <h4>{{ blog.title }}</h4>
+                                <h4>{{ blog.description | slice:'150' }}</h4>
+                            </a>
                             <a class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'update-blog' blog.id %}"><i class="im im-x-mark-circle-o">Изменить</i></a>
                             <a class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'delete-blog' blog.id %}"><i class="im im-x-mark-circle-o">Удалить</i></a>
                         </div>

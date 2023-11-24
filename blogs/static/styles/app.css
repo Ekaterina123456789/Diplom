@@ -230,6 +230,23 @@ img {
   }
 }
 
+/* ======================
+  Footer
+=======================*/
+
+.footer {
+  position: sticky;
+  z-index: 111;
+  background-color: var(--color-sub);
+  padding: 1.5rem 0;
+}
+
+.footer > .container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 /*=======================
   Hero Section
 ========================*/
@@ -593,21 +610,24 @@ img {
 
 .card--blog {
   margin-bottom: 5rem;
-  padding: 0 3rem;
   background-color: var(--color-white);
   box-shadow: 4px 4px 5px 4px var(--color-sub);
   transition: 0.5s;
-  border-radius: 5px;
+  border-radius: 1rem;
   
 }
 
-.carg--blog:hover {
-  box-shadow: 5px 6px 6px 2px var(--color-sub);
-  transition: 0.5s;
+.card--blog  img, .card--adv img {
+  border-radius: 1rem;
+  object-fit: cover;
+  object-position: top center;
+  width: 100%
 }
 
-.card--adv {
-  box-shadow: 2px 2px 3px 2px var(--color-sub);  
+h6 {
+  color: var(--color-text);
+  font-size: 1.3rem;
+  font-weight: 400;
 }
 
 .card--blog:hover {
@@ -615,6 +635,26 @@ img {
   transition: 0.5s;
 }
 
+.card--adv {
+  margin-bottom: 2rem;
+  box-shadow: 4px 4px 5px 4px var(--color-sub);
+  background-color: var(--color-white);
+  border-radius: 1rem;  
+}
+
+.card--adv:hover {
+  box-shadow: 6px 2px 2px 2px var(--color-sub);
+  transition: 0.5s;
+}
+
+.advInfo__title {
+  font-size: 2.6rem;
+  color: var(--color-sub);
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
 
 /*========== Comments ==========*/
 

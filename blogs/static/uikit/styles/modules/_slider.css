@@ -35,8 +35,6 @@
 }
 
 .slider .item img {
-    padding-right: 3rem;
-    padding-bottom: 3rem;
     height: 15rem;
     object-fit: contain;
 }

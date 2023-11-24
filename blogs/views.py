@@ -2,13 +2,28 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Blog, Advertisement, Tag
 from .forms import BlogForm, AdvertisementForm
+from .utils import search_blogs
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from users.models import User, Profiles
 
 
 def blogs(request):
+    page = request.GET.get('page')
+    results = 4
     bl = Blog.objects.all()
+    paginator = Paginator(bl, results)
+    try:
+        bl = paginator.page(page)
+    except PageNotAnInteger:
+        page = 1
+        bl = paginator.page(page)
+    except EmptyPage:
+        page = paginator.num_pages
+        bl = paginator.page(page)
+
+    blogs, search_query = search_blogs(request)
     adv = Advertisement.objects.all()
-    context = {'blogs': bl, 'advertisement': adv}
+    context = {'blogs': bl, 'advertisement': adv, 'search_query': search_query, }
     return render(request, 'blogs/blogs.html', context)
 
 

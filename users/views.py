@@ -7,12 +7,7 @@ from django.contrib import messages
 from .forms import CustomUserCreationForm, ProfileForm, SkillForm, MessageForm
 from .utils import search_profiles
 from blogs.models import Advertisement
-
-
-def profile(request):
-    users = Profiles.objects.all()
-    context = {'profiles': users}
-    return render(request, 'users/index.html', context)
+from django.db.models import Q
 
 
 def profiles(request):
@@ -24,14 +19,18 @@ def profiles(request):
 
 def user_profile(request, pk):
     prof = Profiles.objects.get(pk=pk)
-    top_skills = prof.skill_set.exclude(description__exact='')
-    other_skills = prof.skill_set.filter(description__exact='')
-    advertisement = Advertisement.objects.all()
+    # top_skills = prof.skill_set.exclude(description__exact='')
+    # other_skills = prof.skill_set.filter(description__exact='')
+    skills = prof.skill_set.all()
+
+    # исправить фильтр, чтобы отображались только объявления этого пользователя
+    adv = Advertisement.objects.filter(id=prof.pk)
     context = {
         'profile': prof,
-        'top_skills': top_skills,
-        'other_skills': other_skills,
-        'advertisement': advertisement,
+        # 'top_skills': top_skills,
+        # 'other_skills': other_skills,
+        'skills': skills,
+        'advertisement': adv,
     }
     return render(request, 'users/profile.html', context)
 
@@ -128,7 +127,7 @@ def create_skill(request):
 
             return redirect('account')
 
-    context = {'form': form, 'title': 'Create'}
+    context = {'form': form, 'title': 'Создать'}
     return render(request, 'users/skill_form.html', context)
 
 
@@ -161,7 +160,7 @@ def update_skill(request, pk):
 
             return redirect('account')
 
-    context = {'form': form, 'title': 'Edit'}
+    context = {'form': form, 'title': 'Обновить'}
     return render(request, 'users/skill_form.html', context)
 
 
