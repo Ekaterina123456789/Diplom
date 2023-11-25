@@ -24,7 +24,7 @@ def user_profile(request, pk):
     skills = prof.skill_set.all()
 
     # исправить фильтр, чтобы отображались только объявления этого пользователя
-    adv = Advertisement.objects.filter(id=prof.pk)
+    adv = Advertisement.objects.filter(owner=prof)
     context = {
         'profile': prof,
         # 'top_skills': top_skills,

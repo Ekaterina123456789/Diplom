@@ -1,16 +1,20 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Blog, Advertisement, Tag
-from .forms import BlogForm, AdvertisementForm
+from .forms import BlogForm, AdvertisementForm, ReviewForm
 from .utils import search_blogs
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.contrib import messages
 from users.models import User, Profiles
 
 
 def blogs(request):
     page = request.GET.get('page')
-    results = 4
-    bl = Blog.objects.all()
+    results = 3
+
+    bl, search_query = search_blogs(request)
+    adv = Advertisement.objects.all()
+
     paginator = Paginator(bl, results)
     try:
         bl = paginator.page(page)
@@ -21,15 +25,39 @@ def blogs(request):
         page = paginator.num_pages
         bl = paginator.page(page)
 
-    blogs, search_query = search_blogs(request)
-    adv = Advertisement.objects.all()
-    context = {'blogs': bl, 'advertisement': adv, 'search_query': search_query, }
+    left_index = int(page) - 2
+    if left_index < 1:
+        left_index = 1
+
+    right_index = int(page) + 3
+    if right_index > paginator.num_pages:
+        right_index = paginator.num_pages + 1
+
+    custom_range = range(left_index, right_index)
+
+    context = {'blogs': bl,
+               'advertisement': adv,
+               'search_query': search_query,
+               'paginator': paginator,
+               'custom_range': custom_range}
     return render(request, 'blogs/blogs.html', context)
 
 
 def blog(request, pk):
+    form = ReviewForm()
     blog_obj = Blog.objects.get(id=pk)
-    context = {'blog': blog_obj}
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        review = form.save(commit=False)
+        review.blog = blog_obj
+        review.owner = request.user.profiles
+        review.save()
+
+        messages.success(request, 'Ваш отзыв успешно опубликован!')
+        return redirect('blog', pk=blog_obj.id)
+
+    context = {'blog': blog_obj, 'form': form}
     return render(request, 'blogs/single-blog.html', context)
 
 
@@ -132,5 +160,11 @@ def delete_advertisement(request, pk):
     return render(request, 'blogs/delete.html', context)
 
 
-def about(request):
-    return render(request, 'blogs/about.html')
+def autor(request):
+
+    return render(request, 'blogs/autor.html')
+
+
+def history(request):
+
+    return render(request, 'blogs/history.html')

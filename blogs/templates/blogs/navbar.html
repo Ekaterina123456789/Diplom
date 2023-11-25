@@ -8,7 +8,7 @@
         <div class="menu">
             <button class="btn btn--sub">Меню</button>
             <div class="menu--content">
-                <a href="{% url 'about' %}"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i><br>История</a>
+                <a href="{% url 'history' %}"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i><br>История и полезные статьи</a>
                 <a href="blogs/results.html"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i><br>Результаты соревнований</a>
                             {% if request.user.is_authenticated %}
                 <a href="{% url 'create-blog' %}"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i><br>Добавить новость</a>
@@ -41,7 +41,7 @@
             </ul>
         </nav>
         <div class="autor">
-            <a href="{% url 'blogs' %}"><img class="avatar avatar--lg" src="{% static 'images/autor_photo.jpg' %}" alt="Autor" /> <br> О создателе блога</a>
+            <a href="{% url 'autor' %}"><img class="avatar avatar--lg" src="{% static 'images/autor_photo.jpg' %}" alt="Autor" /> <br> О создателе блога</a>
         </div>
     </div>
 </header>

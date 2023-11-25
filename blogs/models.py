@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 from embed_video.fields import EmbedVideoField
 from users.models import Profiles
@@ -17,6 +19,9 @@ class Blog(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        ordering = ['-created']
+
 
 class Tag(models.Model):
     name = models.CharField(max_length=50)
@@ -33,6 +38,29 @@ class Advertisement(models.Model):
     contacts = models.CharField(max_length=250)
     owner = models.ForeignKey(Profiles, on_delete=models.SET_NULL,
                               blank=True, null=True, verbose_name='Автор объявления')
+    created = models.DateTimeField(default=datetime.datetime.now)
 
     def __str__(self):
         return self.text
+
+    class Meta:
+        ordering = ['-created']
+
+
+class Review(models.Model):
+    VOTE_TYPE = (
+        ('up', 'Up Vote'),
+        ('down', 'Down Vote')
+    )
+    owner = models.ForeignKey(Profiles, on_delete=models.CASCADE, null=True)
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    body = models.TextField(null=True, blank=True)
+    value = models.CharField(max_length=200, choices=VOTE_TYPE)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.value
+
+    class Meta:
+        unique_together = [['owner', 'blog'], ]
+        ordering = ['-created']

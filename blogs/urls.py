@@ -11,5 +11,6 @@ urlpatterns = [
     path('create-advertisement/', views.create_advertisement, name='create-advertisement'),
     path('update-advertisement/<str:pk>/', views.update_advertisement, name='update-advertisement'),
     path('delete-advertisement/<str:pk>/', views.delete_advertisement, name='delete-advertisement'),
-    path('about', views.about, name='about'),
+    path('history', views.history, name='history'),
+    path('autor', views.autor, name='autor'),
 ]

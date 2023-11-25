@@ -610,6 +610,7 @@ img {
 
 .card--blog {
   margin-bottom: 5rem;
+  padding: 0 1rem 1rem 1 rem;
   background-color: var(--color-white);
   box-shadow: 4px 4px 5px 4px var(--color-sub);
   transition: 0.5s;
@@ -625,6 +626,7 @@ img {
 }
 
 h6 {
+  padding: 0.5rem 2rem;
   color: var(--color-text);
   font-size: 1.3rem;
   font-weight: 400;
@@ -637,6 +639,7 @@ h6 {
 
 .card--adv {
   margin-bottom: 2rem;
+  padding-bottom: 1rem;
   box-shadow: 4px 4px 5px 4px var(--color-sub);
   background-color: var(--color-white);
   border-radius: 1rem;  
@@ -666,7 +669,7 @@ h6 {
 
 .comments .form label {
   position: absolute;
-  margin: -9999px;
+  margin: -20px;
 }
 
 .commentList {

@@ -9,7 +9,7 @@
                 <div class="form__field">
                   <label for="formInput#search">Поиск новостей </label>
                   <input class="input input--text" id="formInput#search" type="text" name="search_query"
-                    placeholder="Поиск новостей по автору, тегу или заголовку" />
+                    placeholder="Поиск новостей по автору, тегу или заголовку"/>
                 </div>
                 <input class="btn btn--sub btn--lg" type="submit" value="Погнали!" />
             </form>
@@ -19,17 +19,6 @@
         <div class="container">
             <div class="layout">
                 <div class="column column--2of3">
-
-                    {% if blogs.has_other_pages %}
-                        <div class="paginator">
-                            <ul class="container">
-                            {% for page in paginator.page_range %}
-                                <li><a href="" class="btn">{{ page }}</a></li>
-                            {% endfor %}
-                            </ul>
-                        </div>
-                    {% endif %}
-
                     {% for blog in blogs %}
                     <div class="column">
                         <div class="card--blog">
@@ -53,6 +42,7 @@
                         </div>
                     </div>
                     {% endfor %}
+
                 </div>
                 <div class="column column--1of3">
                     <p class="advInfo__title">Объявления: </p>
@@ -70,6 +60,37 @@
             </div>
         </div>
     </section>
+    {% if blogs.has_other_pages %}
+    <div class="pagination">
+        <ul class="container">
+            {% if blogs.has_previous %}
+            <li><a href="?page={{ blogs.previous_page_number }}" class="btn page-link">&lt;Prev</a></li>
+            {% endif %}
+
+            {% if blogs.number > 3 %}
+            <li><a href="?page=1" class="btn page-link">1</a></li>
+            ...
+            {% endif %}
+
+            {% for page in custom_range %}
+            {% if page == blogs.number %}
+            <li><a href="?page={{ page }}" class="btn page-link btn--sub">{{ page }}</a></li>
+            {% else %}
+            <li><a href="?page={{ page }}" class="btn page-link">{{ page }}</a></li>
+            {% endif %}
+            {% endfor %}
+
+            {% if blogs.number < paginator.num_pages|add:"-3" %}
+            ...
+            <li><a href="?page={{ paginator.num_pages }}" class="btn page-link">{{ paginator.num_pages }}</a></li>
+            {% endif %}
+
+            {% if blogs.has_next %}
+            <li><a href="?page={{ blogs.next_page_number }}" class="btn page-link">Next&gt;</a></li>
+            {% endif %}
+        </ul>
+    </div>
+    {% endif %}
 </main>
 
 {% endblock %}
