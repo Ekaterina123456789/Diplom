@@ -33,7 +33,11 @@
 
           <div class="comments">
             <h3 class="singleBlog__subtitle">Обратная связь</h3>
-
+            {% if request.user.profiles.id in blog.reviewers %}
+            <p>Вы уже оставляли комментарий к этой новости</p>
+            {% elif request.user.profiles == blog.owner %}
+            <p>Вы не можете комментировать свои новости</p>
+            {% elif request.user.is_authenticated %}
             <form class="form" action="{% url 'blog' blog.id %}" method="POST">
               {% csrf_token %}
               {% for field in form %}
@@ -44,6 +48,9 @@
               {% endfor %}
               <input class="btn btn--sub btn--lg" type="submit" value="Оставить комментарий"/>
             </form>
+            {% else %}
+            <a href="{% url 'login' %}">Пожалуйста, зарегистрируйтесь или авторизуйтесь, чтобы оставить комментарий</a>
+            {% endif %}
             <div class="commentList">
               {% for review in blog.review_set.all %}
               <div class="comment">

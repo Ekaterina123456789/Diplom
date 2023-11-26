@@ -2,6 +2,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Profiles, Skill, Message
 from django.forms import ModelForm
+from captcha.fields import CaptchaField
 
 
 class SkillForm(ModelForm):
@@ -46,6 +47,8 @@ class ProfileForm(ModelForm):
 
 
 class MessageForm(ModelForm):
+    captcha = CaptchaField()
+
     class Meta:
         model = Message
         fields = ['name', 'email', 'subject', 'body']

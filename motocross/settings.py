@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'blogs.apps.BlogsConfig',
     'embed_video',
     'users.apps.UsersConfig',
+    'captcha'
 ]
 
 MIDDLEWARE = [

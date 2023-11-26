@@ -1,8 +1,12 @@
 from django.forms import ModelForm, CheckboxSelectMultiple
 from .models import Blog, Advertisement, Review
+from django import forms
+from captcha.fields import CaptchaField
 
 
 class ReviewForm(ModelForm):
+    captcha = CaptchaField()
+
     class Meta:
         model = Review
         fields = ['body',]
@@ -34,6 +38,8 @@ class BlogForm(ModelForm):
 
 
 class AdvertisementForm(ModelForm):
+    captcha = CaptchaField()
+
     class Meta:
         model = Advertisement
         fields = ['text', 'image', 'contacts']
@@ -43,4 +49,3 @@ class AdvertisementForm(ModelForm):
 
         for name, field in self.fields.items():
             field.widget.attrs.update({'class': 'input'})
-

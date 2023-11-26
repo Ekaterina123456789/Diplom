@@ -1,12 +1,12 @@
 {% extends 'blogs/base.html' %}
-(% load static %}
+{% load static %}
 {% block content %}
 
 <main class="messagePage my-xl">
     <div class="content-box">
         <div class="message">
             <a class="backButton" href="{% url 'inbox' %}">
-            <img src=" {% static 'images/left.png'" alt="left">
+            <img src="{% static 'images/left.png'%}" alt="left">
             </a>
             <h2 class="message__subject">{{ message.subject }}</h2>
             {% if message.sender.id %}
@@ -21,8 +21,11 @@
             <div class="message__body">
             {{ message.body | linebreaksbr }}
             </div>
+            <div class="message__answer">
+            <a href="{% url 'create-message' request.user.id %}" class="btn btn--sub btn--sm">Ответить </a>
+            </div>
         </div>
     </div>
 </main>
-
+{% endif %}
 {% endblock %}

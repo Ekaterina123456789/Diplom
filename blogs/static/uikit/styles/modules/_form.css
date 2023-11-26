@@ -11,6 +11,10 @@
   margin-bottom: 1.5rem;
 }
 
+.form__field img {
+  width: 25%;
+}
+
 .form__error {
   color: var(--color-error);
   font-weight: var(--font-medium);

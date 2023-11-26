@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Profiles, User
+from .models import Profiles, User, Message
 from django.contrib.auth import logout, login, authenticate
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
@@ -7,7 +7,7 @@ from django.contrib import messages
 from .forms import CustomUserCreationForm, ProfileForm, SkillForm, MessageForm
 from .utils import search_profiles
 from blogs.models import Advertisement
-from django.db.models import Q
+from captcha.fields import CaptchaField
 
 
 def profiles(request):
@@ -41,18 +41,19 @@ def login_user(request):
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
+        captcha = CaptchaField()
 
         try:
             user = User.objects.get(username=username)
         except ObjectDoesNotExist:
-            messages.error(request,'username does not exists!')
+            messages.error(request, 'Такого имени пользователя не существует!')
 
-        user = authenticate(request, username=username, password=password)
+        user = authenticate(request, username=username, password=password, captcha=captcha)
         if user is not None:
             login(request, user)
             return redirect('profiles')
         else:
-            messages.error(request,'Username or password is incorrect!')
+            messages.error(request, 'Неверное имя пользователя или пароль!')
 
     return render(request, 'users/login_register.html')
 
@@ -193,6 +194,7 @@ def create_message(request, profile_pk):
     recipient = Profiles.objects.get(pk=profile_pk)
     form = MessageForm()
     sender = None
+
     if not request.user.is_authenticated:
         del form.fields['name']
         del form.fields['email']
@@ -209,8 +211,36 @@ def create_message(request, profile_pk):
                 message.name = sender.name
                 message.email = sender.email
 
-            messages.success(request, 'Your message is ok')
+            messages.success(request, 'Ваше сообщение успешно отправлено!')
             message.save()
 
     context = {'recipient': recipient, 'form': form}
     return render(request, 'users/message-form.html', context)
+
+# доработать возможность отправки ответа на сообщение
+# def answer_message(request, pk):
+#     recipient = Profiles.objects.get(pk=pk)  ## вот тут надо подумать
+#     form = MessageForm()
+#     sender = request.user.profiles
+#
+#     # if not request.user.is_authenticated:
+#     #     del form.fields['name']
+#     #     del form.fields['email']
+#     #     sender = request.user.profiles
+#
+#     if request.method == 'POST':
+#         form = MessageForm(request.POST)
+#         if form.is_valid():
+#             message = form.save(commit=False)
+#             message.sender = sender
+#             message.recipient = recipient
+#
+#             if sender:
+#                 message.name = sender.name
+#                 message.email = sender.email
+#
+#             messages.success(request, 'Ваше сообщение успешно отправлено!')
+#             message.save()
+#
+#     context = {'recipient': recipient, 'form': form}
+#     return render(request, 'users/message-form.html', context)

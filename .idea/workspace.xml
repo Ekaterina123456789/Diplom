@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1a09a1ba-a446-431a-adfd-5aa2072963dd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/blogs/templates/blogs/results.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/templates/users/inbox.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogs/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogs/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogs/static/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/blogs/static/styles/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogs/static/uikit/styles/modules/_form.css" beforeDir="false" afterPath="$PROJECT_DIR$/blogs/static/uikit/styles/modules/_form.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogs/templates/blogs/autor_profile.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogs/templates/blogs/history.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogs/templates/blogs/history.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogs/templates/blogs/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogs/templates/blogs/navbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogs/templates/blogs/single-blog.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogs/templates/blogs/single-blog.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogs/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogs/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogs/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogs/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/motocross/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/motocross/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/motocross/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/motocross/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/templates/users/login_register.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/login_register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/templates/users/message-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/message-form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/templates/users/message.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/message.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/templates/users/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="2Yiv6yIGduJagsz9JqiFwOwGJtF" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/ekaza/PycharmProjects/Lesson_projects"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1a09a1ba-a446-431a-adfd-5aa2072963dd" name="Changes" comment="" />
+      <created>1701021043165</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1701021043165</updated>
+    </task>
+    <servers />
+  </component>
+</project>

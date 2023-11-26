@@ -59,6 +59,7 @@ img {
 .menu{
   position: relative;
   display: inline-block;
+  margin-right: 2rem;
 }
 
 .menu--content {
@@ -121,6 +122,10 @@ img {
 .header--nav input[type='checkbox']:checked ~ .header__menu {
   opacity: 1;
   pointer-events: all;
+}
+
+.autor {
+  margin-left: 2rem;
 }
 
 .autor--photo{
@@ -409,6 +414,10 @@ img {
   padding: 4rem;
 }
 
+.column card {
+  padding: 2rem;
+}
+
 .dev__avatar {
   display: block;
   margin: auto;
@@ -693,6 +702,23 @@ h6 {
   font-size: 1.45rem;
 }
 
+/*========== Abuot ==========*/
+
+.card__about {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 2px solid var(--color-light);
+}
+
+/*========== Results ==========*/
+
+.results {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 2px solid var(--color-light);
+}
+
+
 /*=======================
   Account Settings
 ========================*/
@@ -908,6 +934,10 @@ h6 {
 }
 
 .message__date {
+  text-align: right;
+}
+
+.message__answer {
   text-align: right;
 }
 

@@ -45,7 +45,7 @@
                 <img src="{% static 'images/logo.svg' %}" alt="icon"/>
             </a>
             <h3>Account Login</h3>
-            <p>Hello Developer, Welcome Back!</p>
+            <p>Привет, любитель мотокросса, добро пожаловать на сайт!</p>
         </div>
 
         <form action="{% url 'login' %}" method="post" class="form auth__form">
@@ -76,6 +76,7 @@
             <a href="forgetpassword.html">Forget Password?</a>
           </div>
         </form>
+
         <div class="auth__alternative">
             <p>Don’t have an Account?</p>
             <a href="{% url 'register' %}">Sign Up</a>

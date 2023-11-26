@@ -168,3 +168,8 @@ def autor(request):
 def history(request):
 
     return render(request, 'blogs/history.html')
+
+
+def results(request):
+
+    return render(request, 'blogs/results.html')

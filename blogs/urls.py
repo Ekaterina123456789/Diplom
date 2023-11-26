@@ -12,5 +12,6 @@ urlpatterns = [
     path('update-advertisement/<str:pk>/', views.update_advertisement, name='update-advertisement'),
     path('delete-advertisement/<str:pk>/', views.delete_advertisement, name='delete-advertisement'),
     path('history', views.history, name='history'),
+    path('results', views.results, name='results'),
     path('autor', views.autor, name='autor'),
 ]

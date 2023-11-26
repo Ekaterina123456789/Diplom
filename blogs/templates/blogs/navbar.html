@@ -9,10 +9,10 @@
             <button class="btn btn--sub">Меню</button>
             <div class="menu--content">
                 <a href="{% url 'history' %}"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i><br>История и полезные статьи</a>
-                <a href="blogs/results.html"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i><br>Результаты соревнований</a>
-                            {% if request.user.is_authenticated %}
+                <a href="{% url 'results' %}"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i><br>Результаты соревнований</a>
+                {% if request.user.is_authenticated %}
                 <a href="{% url 'create-blog' %}"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i><br>Добавить новость</a>
-                            {% endif %}
+                {% endif %}
             </div>
         </div>
         <!--            </label>-->
@@ -22,7 +22,7 @@
                 <li class="header--menu--items"><a href="{% url 'blogs' %}"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i><br>Главная</a></li>
                 <li class="header--menu--items"><a href="{% url 'profiles' %}"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i><br>Пользователи</a></li>
                 {% if request.user.is_authenticated %}
-                <li class="header__menuItem"><a href="{% url 'blogs' %}"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i>Почта</a></li>
+                <li class="header__menuItem"><a href="{% url 'inbox' %}"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i>Почта</a></li>
                 <li class="header--menu--items"><a href="{% url 'account' %}"><i class="fa-solid fa-motorcycle fa-fade fa-lg" style="color: #2525ed;"></i><br>{{ request.user }}</a></li>
                 <li>
                     <a href="https://vk.com/motocross_ru" target="_blank" rel="noopener noreferrer" class="vk">
@@ -30,7 +30,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="https://t.me/Ekaterina123456789bot" target="_blank" rel="noopener noreferrer" class="vk">
+                    <a href="https://t.me/s/motocrossrace" target="_blank" rel="noopener noreferrer" class="vk">
                         <img src="{% static 'images/tg.ico' %}" alt="telegram"/>
                     </a>
                 </li>

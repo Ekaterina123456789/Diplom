@@ -30,12 +30,13 @@ class Skill(models.Model):
 
 
 class Message(models.Model):
-    sender = models.ForeignKey(Profiles, on_delete=models.SET_NULL, null=True, blank=True)
-    recipient = models.ForeignKey(Profiles, on_delete=models.SET_NULL, null=True, blank=True, related_name='messages')
-    name = models.CharField(max_length=200, null=True, blank=True)
+    sender = models.ForeignKey(Profiles, on_delete=models.SET_NULL, null=True, blank=True, verbose_name='отправитель')
+    recipient = models.ForeignKey(Profiles, on_delete=models.SET_NULL, null=True, blank=True,
+                                  related_name='messages', verbose_name='получатель')
+    name = models.CharField(max_length=200, null=True, blank=True, verbose_name='имя отправителя')
     email = models.EmailField(max_length=200, null=True, blank=True)
-    subject = models.CharField(max_length=200, null=True, blank=True)
-    body = models.TextField()
+    subject = models.CharField(max_length=200, null=True, blank=True, verbose_name='тема письма')
+    body = models.TextField(verbose_name='текст письма')
     is_read = models.BooleanField(default=False, null=True)
     created = models.DateTimeField(auto_now_add=True)
 
